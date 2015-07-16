@@ -1,4 +1,6 @@
-name := """hive-udfs"""
+import sbt.Tests.Setup
+
+name := """scala-udfs"""
 
 version := "0.1"
 
@@ -10,12 +12,14 @@ resolvers += "Cascading repo" at "http://conjars.org/repo"
 
 resolvers ++= Seq(
   "snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-  "releases"  at "http://oss.sonatype.org/content/repositories/releases",
-  "cloudera"  at "https://repository.cloudera.com/artifactory/cloudera-repos/"
+  "releases" at "http://oss.sonatype.org/content/repositories/releases",
+  "cloudera" at "https://repository.cloudera.com/artifactory/cloudera-repos/"
 )
 
-libraryDependencies += "org.apache.hive" % "hive-exec" % "0.9.0" % "provided"
-
 libraryDependencies ++= Seq(
-  "org.apache.hadoop" % "hadoop-core" % "1.1.1" % "provided"
+  "org.apache.hadoop" % "hadoop-core" % "1.1.1" % "provided",
+  "org.apache.hive" % "hive-exec" % "0.9.0" % "provided",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
+  "ch.qos.logback" % "logback-classic" % "1.1.3",
+  "org.scalatest" %% "scalatest" % "2.2.5" % "test"
 )
