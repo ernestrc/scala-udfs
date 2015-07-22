@@ -49,7 +49,7 @@ class DeserializeUser extends GenericUDF {
           val idx = mirror.indexOf(k)
           log.debug(s"Key is $k, value is $v. Index in mirror is $idx")
           USER(k) match {
-            case `stringOI` if v.isEmpty || v == "\n" ⇒ u.updated(idx, null)
+            case `stringOI` if v.isEmpty || v == "\n" || v == " " ⇒ u.updated(idx, null)
             case `stringOI` ⇒ u.updated(idx, v.trim())
             case `intOI` ⇒ u.updated(idx, Try(v.trim().toInt).getOrElse(null))
             case `boolOI` ⇒ u.updated(idx, Try(v.trim().toBoolean).getOrElse(null))
