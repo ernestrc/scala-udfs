@@ -13,8 +13,8 @@ import scala.collection.JavaConversions._
 import scala.util.Try
 
 @Description(
-  name = "serialize_user",
-  value = "_FUNC_(str2) serializes paper trail string str2 into a user"
+  name = "deserialize_user",
+  value = "_FUNC_(str2) deserializes paper trail string str2 into a user"
 )
 class DeserializeUser extends GenericUDF {
 
@@ -48,11 +48,12 @@ class DeserializeUser extends GenericUDF {
           val v = m.group(2)
           val idx = mirror.indexOf(k)
           log.debug(s"Key is $k, value is $v. Index in mirror is $idx")
-          USER(k) match {
-            case `stringOI` if v.isEmpty || v == "\n" || v == " " ⇒ u.updated(idx, null)
-            case `stringOI` ⇒ u.updated(idx, v.trim())
-            case `intOI` ⇒ u.updated(idx, Try(v.trim().toInt).getOrElse(null))
-            case `boolOI` ⇒ u.updated(idx, Try(v.trim().toBoolean).getOrElse(null))
+          USER.get(k) match {
+            case Some(`stringOI`) if v.isEmpty || v == "\n" || v == " " ⇒ u.updated(idx, null)
+            case Some(`stringOI`) ⇒ u.updated(idx, v.trim())
+            case Some(`intOI`) ⇒ u.updated(idx, Try(v.trim().toInt).getOrElse(null))
+            case Some(`boolOI`) ⇒ u.updated(idx, Try(v.trim().toBoolean).getOrElse(null))
+            case None ⇒ u //not a valid key
           }
       }
     }
