@@ -2,8 +2,7 @@ package com.opentok.udfs;
 
 message VedMessage {
 
-    enum Type
-    {
+    enum Type {
         normal_universal_search_result = 22;
         blog_search_result = 152;
         patent_result = 232;
@@ -52,16 +51,45 @@ message VedMessage {
         indepth_article_result_thumbnail = 5078;
         adword_oneline_sitelink = 5158;
         dictionary_definition_link = 5497;
-    };
+    }
+    ;
 
-    optional uint64 link_index              = 1;
-    optional Type link_type                 = 2;
-    optional uint64 sub_result_position     = 5;
-    optional uint64 result_position         = 6;
-    optional uint64 start_result_position   = 7;
-    optional uint64 v3  = 3;
-    optional uint64 v4  = 4;
-    optional uint64 v8  = 8;
-    optional uint64 v9  = 9;
+    message Unknown {
+        message NestedUnknown {
+            optional int64 ts = 1;
+            optional sfixed32 unknown1 = 2;
+            optional sfixed32 unknown2 = 3;
+        }
+        optional NestedUnknown nested_unknown_msg = 1;
+    }
+
+    optional uint64 link_index = 1;
+    optional Type link_type = 2;
+    optional uint64 sub_result_position = 5;
+    optional uint64 result_position = 6;
+    optional uint64 start_result_position = 7;
+    optional uint64 v3 = 3;
+    optional uint64 v4 = 4;
+    optional uint64 v8 = 8;
+    optional uint64 v9 = 9;
     optional uint64 v10 = 10;
+    optional uint64 v11 = 11;
+    optional uint64 v12 = 12;
+    /**
+    It seems that the ved structure has changed.
+    pos 13 now has nested types
+    1: 51
+    2: 51
+    5: 1
+    6: 1
+    13 {
+        1 {
+            1: 1437758367149743 //this seems to be microseconds since epoch
+            2: 0x0a883787 //hex to num: 176699271 / 176723780 / 176725331 ... seems that it could be the number of clicks/views/?? on the ad/campaign?
+            //the closer you click again the closer the number is
+            3: 0x9504a24e //2500108878
+        }
+    }
+    */
+    optional Unknown unknown_msg = 13;
 }
