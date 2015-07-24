@@ -58,7 +58,7 @@ class DeserializeUser extends GenericUDF {
       }
     }
 
-    def deserialize(s: String) = $deserialize(clean(s))
+    def apply(s: String) = $deserialize(clean(s))
 
   }
 
@@ -77,6 +77,6 @@ class DeserializeUser extends GenericUDF {
 
   def evaluate(args: Array[DeferredObject]): Object = {
     val input = inputInspector.getPrimitiveJavaObject(args(0).get)
-    Deserializer.deserialize(input.asInstanceOf[String]).get
+    Deserializer(input.asInstanceOf[String]).get
   }
 }

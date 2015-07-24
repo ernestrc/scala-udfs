@@ -19,6 +19,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "org.apache.hadoop" % "hadoop-core" % "1.1.1" % "provided",
   "org.apache.hive" % "hive-exec" % "0.9.0" % "provided",
+  "com.google.protobuf" % "protobuf-java" % "2.6.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "org.scalatest" %% "scalatest" % "2.2.5" % "test"

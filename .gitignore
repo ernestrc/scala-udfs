@@ -9,3 +9,5 @@ project/plugins/project/
 .scala_dependencies
 .idea_modules/
 .idea/
+src/main/java/com/opentok/udfs/Ved.java
+.DS_Store
