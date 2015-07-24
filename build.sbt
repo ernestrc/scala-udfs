@@ -6,7 +6,9 @@ version := "0.2"
 
 scalaVersion := "2.11.6"
 
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+javacOptions := Seq("-target", "1.7", "-source", "1.7")
+
+scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-target:jvm-1.7")
 
 resolvers += "Cascading repo" at "http://conjars.org/repo"
 
@@ -20,6 +22,8 @@ libraryDependencies ++= Seq(
   "org.apache.hadoop" % "hadoop-core" % "1.1.1" % "provided",
   "org.apache.hive" % "hive-exec" % "0.9.0" % "provided",
   "com.google.protobuf" % "protobuf-java" % "2.6.1",
+  "joda-time" % "joda-time" % "2.8.1",
+  "org.joda" % "joda-convert" % "1.7",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "org.scalatest" %% "scalatest" % "2.2.5" % "test"

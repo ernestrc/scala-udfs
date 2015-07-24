@@ -17,6 +17,7 @@ message VedMessage {
         oneline_sitelink = 338;
         shopping_search_result = 371;
         image_search_result = 429;
+        new_image_search_result = 51;
         Jump_to_link = 586;
         map_search_result_website_link = 612;
         map_search_result_thumbnail = 646;
