@@ -1,5 +1,9 @@
 package com.opentok.udfs;
 
+option java_package = "com.opentok.udfs";
+
+option java_outer_classname = "Ved";
+
 message VedMessage {
 
     enum Type {
@@ -55,13 +59,13 @@ message VedMessage {
     }
     ;
 
-    message Unknown {
-        message NestedUnknown {
+    message Mysterious {
+        message NestedMysterious {
             optional int64 ts = 1;
-            optional sfixed32 unknown1 = 2;
-            optional sfixed32 unknown2 = 3;
+            optional sfixed32 mysterious1 = 2;
+            optional sfixed32 mysterious2 = 3;
         }
-        optional NestedUnknown nested_unknown_msg = 1;
+        optional NestedMysterious nested_mysterious_msg = 1;
     }
 
     optional uint64 link_index = 1;
@@ -92,5 +96,5 @@ message VedMessage {
         }
     }
     */
-    optional Unknown unknown_msg = 13;
+    optional Mysterious mysterious_msg = 13;
 }
