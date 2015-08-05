@@ -1,0 +1,3 @@
+[submodule "netflix-surus"]
+	path = netflix-surus
+	url = git@github.com:Netflix/Surus.git
